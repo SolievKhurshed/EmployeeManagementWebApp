@@ -1,0 +1,55 @@
+﻿@model IEnumerable<EmployeeViewModel>
+
+@{
+    ViewData["Title"] = "Список сотрудников отдела";
+    var deptName = ViewBag.DepartmentName;
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a asp-controller="Home" asp-action="Index" class="text-primary">Главная</a>
+        </li>
+        <li class="breadcrumb-item" aria-current="page">
+            <a asp-controller="Department" asp-action="Index" class="text-primary">Отделы</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">Сотрудники</li>
+    </ol>
+</nav>
+
+<h3>
+    @if (@deptName == null)
+    {
+        <span>Сотрудники отсутствуют</span>
+    }
+    else
+    {
+        @deptName <span>-сотрудники</span>
+    }
+
+</h3>
+
+
+<div class="table-responsive" style="font-size: 15px">
+    <table class="table table-hover table-bordered">
+        <thead class="thead-light">
+            <tr>
+                <th style="width: 40%">ФИО</th>
+                <th style="width: 20%">Группа</th>
+                <th style="width: 20%">Электронный адрес</th>
+                <th style="width: 20%">Детали</th>
+            </tr>
+        </thead>
+        @foreach (var m in Model)
+        {
+            <tr>
+                <td>@m.FullName</td>
+                <td>@m.Group</td>
+                <td>@m.Email</td>
+                <td>
+                    <a class="btn btn-primary" asp-controller="Employee" asp-action="EmployeeDetails" asp-route-id="@m.Id">Подробнее</a>
+                </td>
+            </tr>
+        }
+    </table>
+</div>

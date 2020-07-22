@@ -1,0 +1,39 @@
+﻿@model AddPositionViewModel
+
+@{
+    ViewData["Title"] = "Добавить должность";
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a asp-controller="Home" asp-action="Index" class="text-primary">Главная</a>
+        </li>
+        <li class="breadcrumb-item" aria-current="page">
+            <a asp-controller="Position" asp-action="AddPosition" class="text-primary">Добавить должность</a>
+        </li>
+    </ol>
+</nav>
+
+<h3>Добавить новую должность</h3>
+<div asp-validation-summary="All" class="text-danger"></div>
+
+<div class="card border-primary">
+    <div class="card-header bg-primary text-white">Необходимо заполнить следующие поля</div>
+    <div class="card-body">
+        <form asp-action="AddPosition" method="post">
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label asp-for="Name"></label>
+                    <input asp-for="Name" class="form-control" maxlength="255" />
+                </div>
+                <div class="card-footer bg-transparent">
+                    <button asp-controller="Position" asp-action="AddPosition" type="submit" class="btn btn-primary">Создать</button>
+                    <a asp-controller="Position" asp-action="Index" class="btn btn-secondary">Отменить</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+

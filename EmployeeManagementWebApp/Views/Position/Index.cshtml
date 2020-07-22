@@ -1,0 +1,38 @@
+﻿@model IEnumerable<PositionViewModel>
+
+@{
+    ViewData["Title"] = "Должности";
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a asp-controller="Home" asp-action="Index" class="text-primary">Главная</a>
+        </li>
+        <li class="breadcrumb-item" aria-current="page">
+            <a asp-controller="Position" asp-action="Index" class="text-primary">Должности</a>
+        </li>
+    </ol>
+</nav>
+
+<div class="table-responsive" style="font-size: 15px">
+    <table class="table table-hover table-bordered">
+        <thead class="thead-light">
+            <tr>
+                <th style="width: 70%">Наименование</th>
+                <th style="width: 30%">Действие</th>
+            </tr>
+        </thead>
+        @foreach (var m in Model)
+        {
+            <tr>
+                <td>@m.Name</td>
+                <td>
+                    <a class="btn btn-primary" asp-controller="Position" asp-action="EditPosition" asp-route-id="@m.Id">Изменить</a>
+                    <a class="btn btn-primary" asp-controller="Employee" asp-action="EmployeesByPosition" asp-route-id="@m.Id">Сотрудники</a>
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+

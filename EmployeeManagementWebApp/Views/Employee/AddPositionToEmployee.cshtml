@@ -1,0 +1,46 @@
+﻿@model AddPositionToEmployeeViewModel
+
+@{
+    ViewData["Title"] = "Добавить должность для сотрудника";
+
+    var empId = ViewBag.EmpId;
+    var position = ViewBag.Position;
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a asp-controller="Home" asp-action="Index" class="text-primary">Главная</a>
+        </li>
+        <li class="breadcrumb-item" aria-current="page">
+            <a asp-controller="Employee" asp-action="Index" class="text-primary">Сотрудники</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">Добавить должность</li>
+    </ol>
+</nav>
+
+<h3>Добавить должность для сотрудника @ViewBag.EmpFullName</h3>
+<div asp-validation-summary="All" class="text-danger"></div>
+
+<div class="card border-primary">
+    <div class="card-header bg-primary text-white">Необходимо заполнить следующие поля</div>
+    <div class="card-body">
+        <form asp-action="AddPosition" method="post">
+            <input type="hidden" asp-for="EmployeeId" value="@empId" />
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label asp-for="PositionValue"></label>
+                    <select asp-for="PositionValue" asp-items="ViewBag.Position" class="form-control">
+                        <option disabled selected value="">Выберите должность</option>
+                    </select>
+                    <input type="hidden" asp-for="PositionValue" value="@position" />
+                </div>
+                <div class="card-footer bg-transparent">
+                    <button asp-controller="Employee" asp-action="AddPositionToEmployee" type="submit" class="btn btn-primary">Создать</button>
+                    <a asp-controller="Employee" asp-action="EmployeeDetails" asp-route-id="@empId" class="btn btn-secondary">Отменить</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+

@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/lib/twitter-bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <script src="~/lib/jquery/jquery.min.js"></script>
+    <script src="~/lib/popper/cjs/popper.min.js"></script>
+    <script src="~/lib/twitter-bootstrap/js/bootstrap.min.js"></script>
+
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" asp-controller="Home" asp-action="Index">Управление пользователями</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Department" asp-action="Index">Отделы</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Group" asp-action="Index">Группы</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Employee" asp-action="Index">Сотрудники</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Position" asp-action="Index">Должности</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Добавить
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" asp-controller="Employee" asp-action="AddEmployee">Сотрудника</a>
+                        <a class="dropdown-item" asp-controller="Group" asp-action="AddGroup">Группу</a>
+                        <a class="dropdown-item" asp-controller="Department" asp-action="AddDepartment">Отдел</a>
+                        <a class="dropdown-item" asp-controller="Position" asp-action="AddPosition">Должность</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <br />
+    <div class="container">
+        @RenderBody()
+    </div>
+</body>
+</html>

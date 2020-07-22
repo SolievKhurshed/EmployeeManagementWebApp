@@ -1,0 +1,43 @@
+﻿@model IEnumerable<GroupViewModel>
+
+@{
+    ViewData["Title"] = "Группы";
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a asp-controller="Home" asp-action="Index" class="text-primary">Главная</a>
+        </li>
+        <li class="breadcrumb-item" aria-current="page">
+            <a asp-controller="Group" asp-action="Index" class="text-primary">Группы</a>
+        </li>
+    </ol>
+</nav>
+
+<div class="table-responsive" style="font-size: 15px">
+    <table class="table table-hover table-bordered">
+        <thead class="thead-light">
+            <tr>
+                <th style="width: 25%">Наименование</th>
+                <th style="width: 10%">Почта</th>
+                <th style="width: 20%">Отдел</th>
+                <th style="width: 20%">Описание</th>
+                <th style="width: 25%">Действие</th>
+            </tr>
+        </thead>
+        @foreach (var m in Model)
+        {
+            <tr>
+                <td>@m.Name</td>
+                <td>@m.Email</td>
+                <td>@m.Department</td>
+                <td>@m.Description</td>
+                <td>
+                    <a class="btn btn-primary" asp-controller="Group" asp-action="EditGroup" asp-route-id="@m.Id">Изменить</a>
+                    <a class="btn btn-primary" asp-controller="Employee" asp-action="EmployeesByGroup" asp-route-id="@m.Id">Сотрудники</a>
+                </td>
+            </tr>
+        }
+    </table>
+</div>
